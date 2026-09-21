@@ -1,67 +1,94 @@
-import json
+import feedparser
 import requests
-from bs4 import BeautifulSoup
 
-# মহাখালী এলাকার সুনির্দিষ্ট তথ্য এবং ওভারভিউ
+# Comprehensive information about the Mohakhali area
 MOHAKHALI_INFO = {
-    "name": "মহাখালী (Mohakhali)",
+    "name": "Mohakhali, Dhaka",
     "overview": (
-        "মহাখালী ঢাকার একটি অন্যতম গুরুত্বপূর্ণ ও ব্যস্ত বাণিজ্যিক এবং আবাসিক এলাকা। "
-        "এটি গুলশান, বনানী, তেজগাঁও এবং কাওরান বাজারের সংযোগস্থলে অবস্থিত।"
+        "Mohakhali is a major commercial and residential hub in Dhaka, "
+        "strategically located at the intersection of Gulshan, Banani, "
+        "Tejgaon, and Karwan Bazar."
     ),
     "key_spots": {
-        "শিক্ষা প্রতিষ্ঠান": [
-            "ব্র্যাক ইউনিভার্সিটি (BRAC University)",
-            "বাংলাদেশ ইনস্টিটিউট অফ গ্লাস অ্যান্ড সিরামিকস",
-            "ইউনিভার্সিটি অব ইনফরমেশন টেকনোলজি অ্যান্ড সায়েন্সেস (UITS)",
+        "Educational Institutions": [
+            "BRAC University",
+            "Bangladesh Institute of Glass and Ceramics",
+            "University of Information Technology and Sciences (UITS)",
         ],
-        "চিকিৎসা কেন্দ্র ও হাসপাতাল": [
-            "মহাখালী সংক্রামক ব্যাধি হাসপাতাল",
-            "জাতীয় বক্ষব্যাধি ইনস্টিটিউট ও হাসপাতাল",
-            "ঢাকা মেট্রোপলিটন হাসপাতাল",
-            "ইউনিভার্সাল মেডিকেল কলেজ ও হাসপাতাল (আয়েশা মেমোরিয়াল)",
+        "Hospitals & Healthcare": [
+            "Mohakhali Infectious Diseases Hospital",
+            (
+                "National Institute of Diseases of the Chest and Hospital"
+                " (NIDCH)"
+            ),
+            "Dhaka Metropolitan Hospital",
+            "Universal Medical College & Hospital (Ayesha Memorial)",
         ],
-        "যাতায়াত ও যোগাযোগ": [
-            "মহাখালী বাস টার্মিনাল (উত্তরবঙ্গ ও দূরপাল্লার বাসের প্রধান কেন্দ্র)",
-            "মহাখালী রেলওয়ে ক্রসিং ও ফ্লাইওভার",
-            "গুলশান-১ ও বনানীর সংযোগ সেতু",
+        "Transportation Hubs": [
+            (
+                "Mohakhali Bus Terminal (Major terminal for northern"
+                " districts)"
+            ),
+            "Mohakhali Railway Crossing & Flyover",
+            "Gulshan-1 & Banani Connecting Bridges",
         ],
-        "বাণিজ্যিক ও গুরুত্বপূর্ণ প্রতিষ্ঠান": [
-            "টিঅ্যান্ডটি কলোনি ও মহাখালী বাজার",
-            "আর্কাইভস ও গ্রন্থাগার অধিদপ্তর",
-            "আইসিডিডিআর,বি (icddr,b)",
-            "এসকেএস টাওয়ার (SKS Tower - শপিং মল ও সিনেপ্লেক্স)",
+        "Commercial & Important Landmarks": [
+            "T&T Colony & Mohakhali Kitchen Market",
+            "Department of Archives and Library",
+            (
+                "icddr,b (International Centre for Diarrhoeal Disease"
+                " Research, Bangladesh)"
+            ),
+            "SKS Tower (Shopping Mall & Cineplex)",
         ],
     },
 }
 
 CITY = "Dhaka"
-WEATHER_API_KEY = "YOUR_OPENWEATHER_API_KEY"  # আপনার ওপেনওয়েদার এপিআই কি এখানে দিন
+WEATHER_API_KEY = "a76c7822b7a30f62107b1355feb97d7b"
 
 
-def get_mohakhali_weather():
+def get_weather():
   try:
-    url = f"https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={WEATHER_API_KEY}&units=metric&lang=bengali"
+    url = f"https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={WEATHER_API_KEY}&units=metric"
     response = requests.get(url)
     data = response.json()
 
     if response.status_code == 200:
       temp = data["main"]["temp"]
       desc = data["weather"][0]["description"]
-      print(f"🌤️ এলাকা: মহাখালী, ঢাকা")
-      print(f"🌡️ তাপমাত্রা: {temp}°C")
-      print(f"☁️ আবহাওয়া: {desc.capitalize()}")
+      print(f"\n🌤️ Area: Mohakhali, Dhaka")
+      print(f"🌡️ Temperature: {temp}°C")
+      print(f"☁️ Weather: {desc.capitalize()}")
     else:
-      print("⚠️ আবহাওয়া তথ্য আনতে এপিআই কি (API Key) চেক করুন।")
+      print(
+          "\n⚠️ Failed to fetch weather data. Please check response status."
+      )
   except Exception as e:
-    print(f"ত্রুটি: {e}")
+    print(f"Error: {e}")
 
 
-def show_mohakhali_details():
-  print("\n" + "=" * 40)
-  print(f"📍 {MOHAKHALI_INFO['name']} - পূর্ণাঙ্গ তথ্য নির্দেশিকা")
-  print("=" * 40)
-  print(f"📝 পরিচিতি:\n{MOHAKHALI_INFO['overview']}\n")
+def get_news():
+  print("\n📰 Latest News Headlines (Prothom Alo):")
+  print("-" * 45)
+  try:
+    rss_url = "https://www.prothomalo.com/feed/"
+    feed = feedparser.parse(rss_url)
+
+    if feed.entries:
+      for i, entry in enumerate(feed.entries[:5], 1):
+        print(f"{i}. {entry.title}")
+    else:
+      print("⚠️ Could not load news feeds. Check your internet connection.")
+  except Exception as e:
+    print(f"Error: {e}")
+
+
+def show_details():
+  print("\n" + "=" * 50)
+  print(f"📍 {MOHAKHALI_INFO['name']} - Complete Guide")
+  print("=" * 50)
+  print(f"📝 Overview:\n{MOHAKHALI_INFO['overview']}\n")
 
   for category, items in MOHAKHALI_INFO["key_spots"].items():
     print(f"🔹 {category}:")
@@ -71,7 +98,8 @@ def show_mohakhali_details():
 
 
 if __name__ == "__main__":
-  print("=== 🇧🇩 মহাখালী লোকাল ইনফো ও ওয়েদার টুল ===")
-  get_mohakhali_weather()
-  show_mohakhali_details()
+  print("=== 🚀 Mohakhali Smart Terminal Dashboard ===")
+  show_details()
+  get_weather()
+  get_news()
   print("=========================================")
