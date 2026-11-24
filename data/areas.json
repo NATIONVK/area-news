@@ -1,0 +1,38 @@
+{
+  "coverage": "Mohakhali first, then Dhaka and Bangladesh-wide discovery",
+  "areas": [
+    {
+      "id": "mohakhali",
+      "name": "Mohakhali",
+      "subtitle": "Local hub · Dhaka",
+      "region": "Dhaka",
+      "news_query": "Mohakhali Dhaka",
+      "weather_query": "Mohakhali,Dhaka,BD",
+      "overview": "Mohakhali is a major commercial and residential hub in Dhaka, near Gulshan, Banani and Tejgaon.",
+      "key_spots": {
+        "Educational Institutions": ["BRAC University", "Bangladesh Institute of Glass and Ceramics", "University of Information Technology and Sciences (UITS)"],
+        "Hospitals & Healthcare": ["Mohakhali Infectious Diseases Hospital", "National Institute of Diseases of the Chest and Hospital (NIDCH)", "Dhaka Metropolitan Hospital", "Universal Medical College & Hospital (Ayesha Memorial)"],
+        "Transportation Hubs": ["Mohakhali Bus Terminal (Major terminal for northern districts)", "Mohakhali Railway Crossing & Flyover", "Gulshan-1 & Banani Connecting Bridges"],
+        "Commercial & Important Landmarks": ["T&T Colony & Mohakhali Kitchen Market", "Department of Archives and Library", "icddr,b", "SKS Tower"]
+      }
+    },
+    {
+      "id": "dhaka",
+      "name": "Dhaka",
+      "subtitle": "City-wide updates",
+      "region": "Bangladesh",
+      "news_query": "Dhaka Bangladesh",
+      "weather_query": "Dhaka,BD",
+      "overview": "Explore city-wide headlines and weather for Dhaka. The local directory is currently most complete for Mohakhali."
+    },
+    {
+      "id": "bangladesh",
+      "name": "Bangladesh",
+      "subtitle": "Nationwide coverage",
+      "region": "National",
+      "news_query": "Bangladesh",
+      "weather_query": "Dhaka,BD",
+      "overview": "Nationwide news discovery across Bangladesh. Weather uses Dhaka as the default national reference city."
+    }
+  ]
+}

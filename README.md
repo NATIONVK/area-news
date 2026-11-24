@@ -1,28 +1,17 @@
 <div align="center">
 
-# 🌆 MOHAKHALI AREA NEWS
+# 🌆 AREA NEWS 2.0
 
-### ⚡ Smart Area Intelligence • Weather • News • Local Information
+### Local Intelligence Network · Mohakhali → Dhaka → Bangladesh
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00c6ff,100:0072ff&height=180&section=header&text=MOHAKHALI%20AREA%20NEWS&fontSize=38&fontColor=ffffff&animation=fadeIn&fontAlignY=35"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00d4d8,100:426dff&height=170&section=header&text=AREA%20NEWS%202.0&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=36"/>
 
-<br>
+[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-API-009688?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com)
+[![PWA](https://img.shields.io/badge/PWA-Ready-5A0FC8?style=for-the-badge)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)
+[![Status](https://img.shields.io/badge/Status-Development-orange?style=for-the-badge)](https://github.com/NATIONVK/area-news)
 
-<a href="https://github.com/NATIONVK/area-news">
-<img src="https://img.shields.io/badge/GitHub-NATIONVK%2Farea--news-181717?style=for-the-badge&logo=github"/>
-</a>
-<img src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
-<img src="https://img.shields.io/badge/Weather-OpenWeatherMap-orange?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/News-Prothom%20Alo-red?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge"/>
-
-<br><br>
-
-> 🚀 **A lightweight Python-based smart dashboard for Mohakhali, Dhaka.**
-
-<br>
-
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=20&duration=2500&pause=800&color=00C6FF&center=true&vCenter=true&width=700&lines=Welcome+to+Mohakhali+Area+News;Live+Weather+Information;Latest+News+Headlines;Local+Area+Intelligence;Built+with+Python+%F0%9F%90%8D"/>
+**A responsive web dashboard for local news, weather and area intelligence across Bangladesh.**
 
 </div>
 
@@ -30,318 +19,132 @@
 
 ## 🧭 What is Area News?
 
-**Area News** is a Python-powered terminal dashboard focused on **Mohakhali, Dhaka**.
+Area News combines local information, news discovery and weather in one mobile-friendly dashboard. Version 2.0 keeps the original Mohakhali guide and adds wider coverage.
 
-The project brings several useful pieces of local information together in one place:
+## 🗺️ Coverage
 
-```text
-┌──────────────────────────────────────────────┐
-│              🌆 MOHAKHALI HUB                │
-├──────────────────────────────────────────────┤
-│                                              │
-│  📍 Area Information                         │
-│  🌤️  Current Weather                         │
-│  📰 Latest News Headlines                    │
-│  🏥 Healthcare & Hospitals                   │
-│  🎓 Educational Institutions                 │
-│  🚌 Transportation Hubs                     │
-│  🏢 Commercial Landmarks                     │
-│                                              │
-└──────────────────────────────────────────────┘
-```
-
----
+| Scope | Purpose |
+|---|---|
+| 📍 Mohakhali | Original local directory and area-focused headlines |
+| 🏙️ Dhaka | City-wide news and weather |
+| 🇧🇩 Bangladesh | Nationwide news discovery |
 
 ## ✨ Features
 
-### 📍 Local Area Information
+- Responsive dark dashboard with cyan/blue visual identity
+- Coverage selector for Mohakhali, Dhaka and Bangladesh
+- News feed powered by Google News RSS discovery, with publisher/source links
+- Headline search scoped to the selected coverage area
+- Optional live weather through OpenWeatherMap
+- Existing Mohakhali education, healthcare, transport and landmark directory retained
+- Local preference persistence using browser localStorage
+- PWA shell caching for quicker repeat visits
+- Legacy Python terminal dashboard retained
+- Automated tests and GitHub Actions CI
 
-The dashboard contains information about **Mohakhali, Dhaka**, including:
+> News headlines link to their original publishers. Area News does not republish full articles.
 
-* 🎓 Educational Institutions
-* 🏥 Hospitals & Healthcare
-* 🚌 Transportation Hubs
-* 🏢 Commercial Areas
-* 🗺️ Important Local Landmarks
+## 🧱 Architecture
 
----
+    Browser / PWA
+       ├── Dashboard · Search · Area selector
+       ├── Local preferences (localStorage)
+       ▼
+    FastAPI backend
+       ├── /api/areas
+       ├── /api/news
+       ├── /api/search
+       ├── /api/weather
+       └── /api/health
+            ├── Google News RSS
+            └── OpenWeatherMap (optional key)
 
-### 🌤️ Live Weather
+## 🚀 Run locally
 
-Weather information is fetched from **OpenWeatherMap**.
+Requires Python 3.10+.
 
-The dashboard displays:
+    git clone https://github.com/NATIONVK/area-news.git
+    cd area-news
+    python -m venv .venv
 
-```text
-🌤️ Area: Mohakhali, Dhaka
-🌡️ Temperature: XX°C
-☁️ Weather: Clear Sky
-```
+Activate the virtual environment:
 
----
+- Windows: .venv\Scripts\activate
+- Linux / macOS / Termux: source .venv/bin/activate
 
-### 📰 Latest News
+Install and start:
 
-The project reads headlines through the **Prothom Alo RSS feed** and displays the latest available headlines directly inside the terminal.
+    pip install -r requirements.txt
+    uvicorn app:app --host 0.0.0.0 --port 8000
 
-Example:
+Open http://127.0.0.1:8000 in your browser. On Android, open the same address in your phone browser.
 
-```text
-📰 Latest News Headlines (Prothom Alo)
-─────────────────────────────────────────────
+## 🌤️ Enable live weather
 
-1. Latest headline...
-2. Latest headline...
-3. Latest headline...
-4. Latest headline...
-5. Latest headline...
-```
+Weather is optional. Create an OpenWeatherMap API key, then set it as an environment variable. Never paste a real key into source code or commit it.
 
----
+Linux / macOS / Termux:
 
-## 🧠 Project Architecture
+    export OPENWEATHER_API_KEY="your_key_here"
+    uvicorn app:app --host 0.0.0.0 --port 8000
 
-```text
-                ┌─────────────────────┐
-                │   MOHAKHALI TOOL    │
-                └──────────┬──────────┘
-                           │
-             ┌─────────────┼─────────────┐
-             ▼             ▼             ▼
-       ┌──────────┐  ┌──────────┐  ┌──────────┐
-       │   AREA   │  │ WEATHER  │  │   NEWS   │
-       │   INFO   │  │   API    │  │   RSS    │
-       └────┬─────┘  └────┬─────┘  └────┬─────┘
-            │             │             │
-            └─────────────┼─────────────┘
-                          ▼
-                ┌──────────────────┐
-                │ TERMINAL OUTPUT  │
-                └──────────────────┘
-```
+Windows PowerShell:
 
----
+    $env:OPENWEATHER_API_KEY="your_key_here"
+    uvicorn app:app --host 0.0.0.0 --port 8000
 
-## 🛠️ Tech Stack
+For hosting, add OPENWEATHER_API_KEY to the provider's secret/environment settings. See .env.example.
 
-| Technology          | Purpose              |
-| ------------------- | -------------------- |
-| 🐍 Python           | Core application     |
-| 🌐 Requests         | Weather API requests |
-| 📰 Feedparser       | RSS news parsing     |
-| ☁️ OpenWeatherMap   | Weather data         |
-| 🗞️ Prothom Alo RSS | News headlines       |
-| 💻 Terminal         | Dashboard interface  |
+## 🧪 Tests
 
----
+    python -m unittest discover -s tests -v
 
-## 📂 Project Structure
+GitHub Actions runs the test suite on pushes to main/feature branches and pull requests.
 
-```text
-area-news/
-│
-├── 🐍 mohakhali_tool.py
-│
-└── 📄 README.md
-```
+## 🔐 Security notes
 
----
+- No API key is stored in the repository.
+- The previously embedded weather credential has been removed from the current source. Because it was exposed in a public commit, revoke/rotate it in the OpenWeatherMap dashboard; deleting it from the latest file does not erase Git history.
+- Keep real credentials in environment variables or hosting secrets.
+- API requests use timeouts and return controlled errors when providers are unavailable.
 
-## ⚙️ Installation
+## 📂 Project structure
 
-### 1️⃣ Clone the repository
+    area-news/
+    ├── app.py
+    ├── mohakhali_tool.py
+    ├── data/areas.json
+    ├── static/index.html
+    ├── static/styles.css
+    ├── static/app.js
+    ├── static/manifest.webmanifest
+    ├── static/sw.js
+    ├── tests/test_app.py
+    ├── .github/workflows/ci.yml
+    ├── .env.example
+    ├── .gitignore
+    └── requirements.txt
 
-```bash
-git clone https://github.com/NATIONVK/area-news.git
-```
+## 🗺️ Roadmap
 
-### 2️⃣ Enter the directory
-
-```bash
-cd area-news
-```
-
-### 3️⃣ Install dependencies
-
-```bash
-pip install requests feedparser
-```
-
-### 4️⃣ Run the tool
-
-```bash
-python mohakhali_tool.py
-```
-
----
-
-## 🚀 Quick Start
-
-Run everything with:
-
-```bash
-git clone https://github.com/NATIONVK/area-news.git && cd area-news && pip install requests feedparser && python mohakhali_tool.py
-```
-
----
-
-## 🖥️ Example Output
-
-```text
-==================================================
-
-        🚀 MOHAKHALI SMART TERMINAL DASHBOARD
-
-==================================================
-
-📍 Mohakhali, Dhaka
-
-📝 Overview:
-Mohakhali is a major commercial and residential
-hub in Dhaka.
-
-🔹 Educational Institutions:
-   - BRAC University
-   - Bangladesh Institute of Glass and Ceramics
-   - UITS
-
-🔹 Hospitals & Healthcare:
-   - Mohakhali Infectious Diseases Hospital
-   - NIDCH
-   - Dhaka Metropolitan Hospital
-
-🌤️ Area: Mohakhali, Dhaka
-🌡️ Temperature: XX°C
-☁️ Weather: Clear Sky
-
-📰 Latest News Headlines
-─────────────────────────────────────────────
-
-1. Latest headline
-2. Latest headline
-3. Latest headline
-4. Latest headline
-5. Latest headline
-
-==================================================
-```
-
----
-
-## 🔥 Why This Project?
-
-```text
-        INFORMATION
-             │
-             ▼
-     ┌───────────────┐
-     │  AREA + NEWS  │
-     │   + WEATHER   │
-     └───────┬───────┘
-             │
-             ▼
-       ONE TERMINAL
-       DASHBOARD
-```
-
-Instead of checking different sources separately, this project demonstrates how Python can combine:
-
-**Local Information + Weather API + RSS News**
-
-into one simple terminal experience.
-
----
-
-## 🗺️ Current Coverage
-
-<div align="center">
-
-### 📍 MOHAKHALI • DHAKA • BANGLADESH 🇧🇩
-
-</div>
-
-The current project is specifically configured around **Mohakhali, Dhaka**.
-
----
-
-## 🔮 Future Roadmap
-
-```text
-[✓] Mohakhali Information
-[✓] Weather Integration
-[✓] RSS News Integration
-[✓] Terminal Dashboard
-
-[ ] 🌍 Multiple Area Support
-[ ] 🔎 News Search
-[ ] 🌤️ Weather Forecast
-[ ] 🚦 Traffic Information
-[ ] 🚨 Local Alert System
-[ ] 🗺️ Interactive Map
-[ ] 📊 Area Statistics
-[ ] 🔔 Notification System
-[ ] 🧠 Smart News Filtering
-[ ] 📱 Mobile-Friendly Interface
-```
-
----
-
-## 🤝 Contributing
-
-Contributions, ideas and improvements are welcome.
-
-```bash
-# Fork
-# Clone
-# Create your branch
-# Make your changes
-# Commit
-# Push
-# Open a Pull Request
-```
-
----
-
-## ⭐ Support
-
-If you find this project interesting:
-
-<div align="center">
-
-### ⭐ Star the repository
-
-### 🍴 Fork the project
-
-### 🛠️ Build something better
-
-</div>
-
----
+- [x] Preserve Mohakhali directory and terminal tool
+- [x] Responsive web dashboard
+- [x] Mohakhali / Dhaka / Bangladesh coverage scopes
+- [x] RSS news discovery and headline search
+- [x] Optional weather integration without committed secrets
+- [x] Local preference persistence and PWA shell cache
+- [x] Basic tests and CI workflow
+- [ ] Verified traffic and public-service alerts
+- [ ] Interactive maps and saved locations
+- [ ] Moderated user-submitted local updates
+- [ ] Deployment and live API monitoring
 
 ## 👨‍💻 Author
 
-<div align="center">
+**NATIONVK · Yeasien Ahmed**
 
-### **NATIONVK**
-
-<a href="https://github.com/NATIONVK">
-<img src="https://img.shields.io/badge/GitHub-NATIONVK-181717?style=for-the-badge&logo=github"/>
-</a>
-
-<br><br>
-
-**Built with 🐍 Python & ❤️ from Bangladesh 🇧🇩**
-
-</div>
-
----
+[GitHub](https://github.com/NATIONVK) · [Repository](https://github.com/NATIONVK/area-news)
 
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0072ff,100:00c6ff&height=120&section=footer&animation=fadeIn"/>
-
-### `MOHAKHALI AREA NEWS`
-
-**Local Information • Live Weather • Latest News**
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:426dff,100:00d4d8&height=100&section=footer"/>
 </div>
