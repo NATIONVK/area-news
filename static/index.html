@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07111f"><meta name="description" content="Area News — local news, weather and area intelligence for Bangladesh.">
+<title>AREA NEWS — Local Intelligence</title>
+<link rel="manifest" href="/static/manifest.webmanifest"><link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header class="topbar"><a class="brand" href="/"><b>AN</b><span>AREA<span class="cyan">NEWS</span><small>LOCAL INTELLIGENCE NETWORK</small></span></a><div class="online">● SYSTEM ONLINE <button id="refreshBtn" aria-label="Refresh">↻</button></div></header>
+<main class="shell">
+<section class="hero"><div><p class="eyebrow">BANGLADESH · REAL-TIME DISCOVERY</p><h1>Your area.<br><span>Your updates.</span></h1><p class="sub">Local stories, weather and useful places — connected in one dashboard.</p></div><div class="orb">🌆</div></section>
+<section class="controls"><label>COVERAGE AREA<select id="areaSelect"><option>Loading…</option></select></label><label class="search">SEARCH HEADLINES<div><input id="searchInput" placeholder="Search news, topics or updates…" maxlength="80"><button id="searchBtn">SEARCH</button></div></label></section>
+<section class="heading"><div><p class="eyebrow">AT A GLANCE</p><h2 id="areaTitle">Mohakhali / Dhaka</h2></div><small id="updatedAt">Waiting for data</small></section>
+<section class="overview"><article class="panel"><p class="eyebrow">CURRENT WEATHER</p><div id="weatherContent" class="weather">Loading weather…</div><small>OpenWeatherMap · Optional live integration</small></article><article class="panel"><p class="eyebrow">AREA INTELLIGENCE</p><p id="areaOverview"></p><div class="stats"><strong id="placeCount">—</strong><small>LISTED PLACES</small><strong id="scopeLabel">LOCAL</strong><small>COVERAGE</small></div></article></section>
+<section class="section"><div class="heading"><div><p class="eyebrow">THE LATEST</p><h2>News feed <small id="feedScope"></small></h2></div><div class="tabs"><button class="active" data-filter="all">All</button><button data-filter="local">Local</button></div></div><p id="newsStatus" class="status">Loading headlines…</p><div id="newsGrid" class="news-grid"></div></section>
+<section class="section"><div class="heading"><div><p class="eyebrow">EXPLORE THE AREA</p><h2>Local directory</h2></div></div><div id="directoryGrid" class="directory-grid"></div></section>
+<footer>AREA<span class="cyan">NEWS</span> v2.0 <span>Built by <a href="https://github.com/NATIONVK">NATIONVK</a> · Bangladesh 🇧🇩</span></footer>
+</main><div id="toast" role="status"></div><script src="/static/app.js" defer></script>
+</body></html>
